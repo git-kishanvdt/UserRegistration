@@ -27,7 +27,9 @@ public class UserRegServiceImpl implements UserRegService {
 	//	userRegData.setUserId(userReg.getUserRegId());
 	//	userRegResponse.setData(userRegData);
 	//	}
-
+		if(userReg.getEmail()==null || userReg.getEmail().isEmpty()) {
+			System.out.println("Field is Empty");
+		}
 		UserRegResponse userRegResponse = new UserRegResponse();
 
 		userRegResponse.setStatus("SUCCESS");
