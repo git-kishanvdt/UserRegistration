@@ -2,23 +2,27 @@ package com.user.reg.DTO;
 
 public class UserRegData {
 
-	private Integer userId;
-	private String eMail;
+	private String userId;
+	private String email;
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public String geteMail() {
-		return eMail;
-	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+
+	public String getEmail() {
+		return email;
 	}
 
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
 }

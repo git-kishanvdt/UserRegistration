@@ -17,7 +17,7 @@ public class UserReg {
 	@Column(name = "Name")
 	private String name;
 	@Column(name = "Email")
-	private String eMail;
+	private String email;
 	@Column(name = "PhoneNumber")
 	private Integer phoneNumber;
 	@Column(name = "Password")
@@ -33,9 +33,6 @@ public class UserReg {
 		return name;
 	}
 
-	public String geteMail() {
-		return eMail;
-	}
 
 	public Integer getPhoneNumber() {
 		return phoneNumber;
@@ -57,9 +54,7 @@ public class UserReg {
 		this.name = name;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
+	
 
 	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -72,5 +67,15 @@ public class UserReg {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 
 }
