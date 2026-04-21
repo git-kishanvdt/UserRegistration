@@ -17,30 +17,50 @@ public class UserRegServiceImpl implements UserRegService {
 
 	@Override
 	public UserRegResponse saveUser(UserReg userReg) {
-		
-		//validation
-		//if userreg filed empty then throw validation
-		//{
-	//	userRegResponse.setStatus("SUCCESS");
-	//	userRegResponse.setMessage("User registered successfully");
-	//	userRegData.setEmail(userReg.getEmail());
-	//	userRegData.setUserId(userReg.getUserRegId());
-	//	userRegResponse.setData(userRegData);
-	//	}
-		if(userReg.getEmail()==null || userReg.getEmail().isEmpty()) {
-			System.out.println("Field is Empty");
-		}
+
+		// validation
+		// if userreg filed empty then throw validation
+		// {
+		// userRegResponse.setStatus("SUCCESS");
+		// userRegResponse.setMessage("User registered successfully");
+		// userRegData.setEmail(userReg.getEmail());
+		// userRegData.setUserId(userReg.getUserRegId());
+		// userRegResponse.setData(userRegData);
+		// }
+
 		UserRegResponse userRegResponse = new UserRegResponse();
 
-		userRegResponse.setStatus("SUCCESS");
-		userRegResponse.setMessage("User registered successfully");
-		UserRegData userRegData = new UserRegData();
-		
-		userRegRepo.save(userReg);
-		userRegData.setEmail(userReg.getEmail());
-		userRegData.setUserId(userReg.getUserRegId());
-		userRegResponse.setData(userRegData);
-		return userRegResponse;
+		if (userReg.getEmail() == null || userReg.getEmail().isEmpty() || userReg.getName() == null
+				|| userReg.getName().isEmpty() || userReg.getPhoneNumber() == null || userReg.getPhoneNumber() < 1
+				|| userReg.getPassword() == null || userReg.getPassword().isEmpty()) {
+			System.out.println("Field is Empty");
+
+			userRegResponse.setStatus("Error");
+			/*
+			 * userRegResponse.setMessage("Email already exist");
+			 * userReg.setEmail(userReg.getEmail());
+			 * 
+			 * 
+			 * userRegResponse.setStatus("Duplicate");
+			 * userRegResponse.setMessage("Duplicate names");
+			 * userReg.setName(userReg.getName());
+			 */
+
+			return userRegResponse;
+
+		} else {
+
+			userRegResponse.setStatus("SUCCESS");
+			userRegResponse.setMessage("User registered successfully");
+			UserRegData userRegData = new UserRegData();
+
+			userRegRepo.save(userReg);
+			userRegData.setEmail(userReg.getEmail());
+			userRegData.setUserId(userReg.getUserRegId());
+			userRegResponse.setData(userRegData);
+			return userRegResponse;
+		}
+
 	}
 
 }
